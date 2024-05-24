@@ -10,6 +10,7 @@ import AVFoundation
 
 protocol PostViewControllerDelegate: AnyObject {
     func postViewControllerDidPressBackButton(_ controller: UIViewController, currentTime: CMTime?)
+    func postViewControllerDidPressRepeatButton(_ controller: UIViewController)
 }
 
 class PostViewController: UIViewController {
@@ -17,6 +18,7 @@ class PostViewController: UIViewController {
     @IBOutlet private weak var videoPlayerView: VideoPlayerView!
     @IBOutlet private weak var usernameLabel: UILabel!
     @IBOutlet private weak var profileImageView: UIImageView!
+    @IBOutlet private weak var repeatButton: UIButton!
     @IBOutlet private weak var likesLabel: UILabel!
     @IBOutlet private weak var likeButton: UIButton!
     
@@ -32,6 +34,7 @@ class PostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Post"
+        setupView()
         fetchData()
         
         navigationItem.backAction = UIAction { _ in
@@ -52,9 +55,26 @@ class PostViewController: UIViewController {
         guard let profile = profileViewModel.profile else { return }
         showProfileViewController(with: profile)
     }
+    
+    @IBAction func viewDidTapOnRepeatButton(_ sender: Any) {
+        delegate?.postViewControllerDidPressRepeatButton(self)
+        repeatButton.isHidden = true
+        videoPlayerView.seek(to: .zero)
+        videoPlayerView.play()
+    }
 }
 
 private extension PostViewController {
+    
+    func setupView() {
+        usernameLabel.text = nil
+        profileImageView.image = nil
+        repeatButton.isHidden = true
+        videoPlayerView.configure(with: "")
+        videoPlayerView.delegate = self
+        likesLabel.text = nil
+        likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+    }
     
     func fetchData() {
         guard let postId = postId, let username = username else { return }
@@ -126,5 +146,12 @@ extension PostViewController: ProfileViewControllerDelegate {
     func profileViewControllerDidPressBackButton(_ controller: UIViewController) {
         navigationController?.popViewController(animated: true)
         videoPlayerView.play()
+    }
+}
+
+extension PostViewController: VideoPlayerViewOutput {
+    
+    func videoPlayerViewItemDidPlayToEndTime() {
+        repeatButton.isHidden = false
     }
 }

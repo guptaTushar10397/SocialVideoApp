@@ -30,15 +30,42 @@
                                             <constraint firstAttribute="height" constant="5" id="Lfo-Ha-rWc"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BSc-ar-1Lz">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KvD-qs-0Nh">
                                         <rect key="frame" x="0.0" y="15" width="256" height="20"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BSc-ar-1Lz">
+                                                <rect key="frame" x="0.0" y="0.0" width="38.333333333333336" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="zgG-79-STm"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                <color key="textColor" red="0.46274509803921571" green="0.53333333333333333" blue="0.35686274509803922" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="glV-EJ-lgF">
+                                                <rect key="frame" x="236" y="0.0" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="fXP-SC-z8L"/>
+                                                    <constraint firstAttribute="height" constant="20" id="s6Z-5q-1VZ"/>
+                                                </constraints>
+                                                <color key="tintColor" red="0.46274509803921571" green="0.53333333333333333" blue="0.35686274509803922" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Button" image="repeat" catalog="system"/>
+                                                <connections>
+                                                    <action selector="viewDidTapOnRepeatButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="nOF-hK-mae"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="zgG-79-STm"/>
+                                            <constraint firstAttribute="bottom" secondItem="BSc-ar-1Lz" secondAttribute="bottom" id="8XP-el-uyt"/>
+                                            <constraint firstAttribute="trailing" secondItem="glV-EJ-lgF" secondAttribute="trailing" id="IR3-9h-tb2"/>
+                                            <constraint firstItem="BSc-ar-1Lz" firstAttribute="top" secondItem="KvD-qs-0Nh" secondAttribute="top" id="M6v-Wf-eFn"/>
+                                            <constraint firstAttribute="bottom" secondItem="glV-EJ-lgF" secondAttribute="bottom" id="SGm-fb-Faf"/>
+                                            <constraint firstItem="BSc-ar-1Lz" firstAttribute="leading" secondItem="KvD-qs-0Nh" secondAttribute="leading" id="d7v-ys-9fr"/>
+                                            <constraint firstItem="glV-EJ-lgF" firstAttribute="top" secondItem="KvD-qs-0Nh" secondAttribute="top" id="hwj-XD-ZoG"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                        <color key="textColor" red="0.46274509803921571" green="0.53333333333333333" blue="0.35686274509803922" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L1a-HT-yMs">
                                         <rect key="frame" x="0.0" y="45" width="256" height="60"/>
                                         <subviews>
@@ -103,6 +130,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="likesLabel" destination="bc8-8i-48Y" id="5cK-43-noo"/>
+                <outlet property="repeatButton" destination="glV-EJ-lgF" id="bQz-y3-jVK"/>
                 <outlet property="usernameLabel" destination="BSc-ar-1Lz" id="mtm-dG-85Y"/>
                 <outlet property="videoPlayerView" destination="gYa-ms-Ii4" id="wQH-1M-F5k"/>
             </connections>
@@ -110,6 +138,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="repeat" catalog="system" width="128" height="98"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

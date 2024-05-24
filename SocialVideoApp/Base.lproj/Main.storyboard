@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="S3x-Rr-5o7">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="S3x-Rr-5o7">
                                 <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
@@ -114,8 +114,21 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yw0-LF-52Y">
                                                 <rect key="frame" x="0.0" y="125" width="329" height="456"/>
                                                 <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uqd-Kg-TFZ">
+                                                        <rect key="frame" x="309" y="0.0" width="20" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="20" id="21h-2T-hmk"/>
+                                                            <constraint firstAttribute="height" constant="20" id="lVN-zD-oGw"/>
+                                                        </constraints>
+                                                        <color key="tintColor" red="0.46274509803921571" green="0.53333333333333333" blue="0.35686274509803922" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" image="repeat" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="viewDidTapOnRepeatButton:" destination="ByE-9M-R3e" eventType="touchUpInside" id="84B-eG-OlZ"/>
+                                                        </connections>
+                                                    </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQw-H9-orr" customClass="VideoPlayerView" customModule="SocialVideoApp" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="329" height="456"/>
+                                                        <rect key="frame" x="0.0" y="25" width="329" height="406"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -126,9 +139,11 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
+                                                    <constraint firstItem="Uqd-Kg-TFZ" firstAttribute="top" secondItem="yw0-LF-52Y" secondAttribute="top" id="LxK-e5-3Ye"/>
                                                     <constraint firstItem="mQw-H9-orr" firstAttribute="centerY" secondItem="yw0-LF-52Y" secondAttribute="centerY" id="TDS-Q1-hg3"/>
                                                     <constraint firstItem="mQw-H9-orr" firstAttribute="centerX" secondItem="yw0-LF-52Y" secondAttribute="centerX" id="fjp-Vh-CAd"/>
-                                                    <constraint firstItem="mQw-H9-orr" firstAttribute="top" secondItem="yw0-LF-52Y" secondAttribute="top" id="hEP-Xs-bTa"/>
+                                                    <constraint firstItem="mQw-H9-orr" firstAttribute="top" secondItem="yw0-LF-52Y" secondAttribute="top" constant="25" id="hEP-Xs-bTa"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Uqd-Kg-TFZ" secondAttribute="trailing" id="kbE-g3-Pmb"/>
                                                     <constraint firstItem="mQw-H9-orr" firstAttribute="leading" secondItem="yw0-LF-52Y" secondAttribute="leading" id="xnj-FL-06f"/>
                                                 </constraints>
                                             </view>
@@ -205,6 +220,7 @@
                         <outlet property="likeButton" destination="VQG-22-FPe" id="cQP-HF-dvX"/>
                         <outlet property="likesLabel" destination="N7z-TU-Jrd" id="4Nm-hP-k2N"/>
                         <outlet property="profileImageView" destination="kra-S3-gBn" id="eY9-Hd-lTj"/>
+                        <outlet property="repeatButton" destination="Uqd-Kg-TFZ" id="6Yg-3w-XNe"/>
                         <outlet property="usernameLabel" destination="gaj-0U-COb" id="sHl-9e-sDz"/>
                         <outlet property="videoPlayerView" destination="mQw-H9-orr" id="sDg-W1-NoN"/>
                     </connections>
@@ -343,6 +359,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="repeat" catalog="system" width="128" height="98"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

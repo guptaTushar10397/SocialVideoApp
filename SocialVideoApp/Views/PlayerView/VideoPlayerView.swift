@@ -8,18 +8,27 @@
 import UIKit
 import AVFoundation
 
+protocol VideoPlayerViewOutput: AnyObject {
+    func videoPlayerViewItemDidPlayToEndTime()
+}
+
 class VideoPlayerView: UIView {
     private var player: AVPlayer?
     private var playerLayer: AVPlayerLayer?
-
+    weak var delegate: VideoPlayerViewOutput?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupPlayer()
     }
-
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupPlayer()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     private func setupPlayer() {
@@ -30,8 +39,10 @@ class VideoPlayerView: UIView {
         playerLayer!.frame = bounds
         playerLayer!.videoGravity = .resizeAspectFill
         layer.addSublayer(playerLayer!)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(restartVideo), name: .AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
     }
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         playerLayer?.frame = bounds
@@ -58,5 +69,9 @@ class VideoPlayerView: UIView {
     
     func seek(to time: CMTime) {
         player?.seek(to: time)
+    }
+    
+    @objc private func restartVideo() {
+        delegate?.videoPlayerViewItemDidPlayToEndTime()
     }
 }

@@ -134,6 +134,7 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension FeedViewController: PostViewControllerDelegate {
+    
     func postViewControllerDidPressBackButton(_ controller: UIViewController, currentTime: CMTime?) {
         navigationController?.popViewController(animated: true)
         guard let currentlyPlayingVideoIndexPath = currentlyPlayingVideoIndexPath,
@@ -144,8 +145,9 @@ extension FeedViewController: PostViewControllerDelegate {
         cell.playVideo()
     }
     
-    func postViewControllerDidPressBackButton(_ controller: UIViewController) {
-        navigationController?.popViewController(animated: true)
-        
+    func postViewControllerDidPressRepeatButton(_ controller: UIViewController) {
+        guard let currentlyPlayingVideoIndexPath = currentlyPlayingVideoIndexPath,
+              let cell = tableView.cellForRow(at: currentlyPlayingVideoIndexPath) as? PostCell else { return }
+        cell.hideRepeatButton()
     }
 }
