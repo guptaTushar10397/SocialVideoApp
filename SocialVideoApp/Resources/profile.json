@@ -1,0 +1,35 @@
+{
+  "status": "success",
+  "data": [
+    {
+      "username": "user123",
+      "profilePictureUrl": "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
+      "posts": [
+        {
+          "postId": "post_id_1",
+          "videoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+          "thumbnail_url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerFun.jpg",
+          "likes": 56
+        },
+        {
+          "postId": "post_id_3",
+          "videoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+          "thumbnail_url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerBlazes.jpg",
+          "likes": 0
+        }
+      ]
+    },
+    {
+      "username": "user456",
+      "profilePictureUrl": "https://i.pravatar.cc/250?u=mail@ashallendesign.co.uk",
+      "posts": [
+        {
+          "postId": "post_id_2",
+          "videoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+          "thumbnail_url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerEscapes.jpg",
+          "likes": 102
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "status": "success",
+  "data": [
+    {
+      "postId": "post_id_1",
+      "videoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+      "thumbnail_url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerFun.jpg",
+      "username": "user123",
+      "likes": 56
+    },
+    {
+      "postId": "post_id_2",
+      "videoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+      "thumbnail_url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerEscapes.jpg",
+      "username": "user456",
+      "likes": 102
+    },
+    {
+      "postId": "post_id_3",
+      "videoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      "thumbnail_url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerBlazes.jpg",
+      "username": "user123",
+      "likes": 0
+    }
+  ]
+}
