@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  FeedViewController.swift
 //  SocialVideoApp
 //
 //  Created by Tushar Gupta on 23/05/24.
