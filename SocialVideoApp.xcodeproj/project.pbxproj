@@ -32,6 +32,7 @@
 		28CEA5532C0071DE00FA914A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CEA5522C0071DE00FA914A /* ProfileViewController.swift */; };
 		28CEA5582C009BC500FA914A /* PostCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CEA5562C009BC500FA914A /* PostCollectionCell.swift */; };
 		28CEA5592C009BC500FA914A /* PostCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28CEA5572C009BC500FA914A /* PostCollectionCell.xib */; };
+		28CEA55D2C02200000FA914A /* CustomAVPlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CEA55C2C02200000FA914A /* CustomAVPlayerItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		28CEA5522C0071DE00FA914A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		28CEA5562C009BC500FA914A /* PostCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionCell.swift; sourceTree = "<group>"; };
 		28CEA5572C009BC500FA914A /* PostCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostCollectionCell.xib; sourceTree = "<group>"; };
+		28CEA55C2C02200000FA914A /* CustomAVPlayerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAVPlayerItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				285B94782BFF532D00D21211 /* VideoPlayerView.swift */,
+				28CEA55C2C02200000FA914A /* CustomAVPlayerItem.swift */,
 			);
 			path = PlayerView;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				285B94752BFF3AF300D21211 /* PostViewModel.swift in Sources */,
 				285B94732BFF3AC900D21211 /* FeedViewModel.swift in Sources */,
 				285B94642BFF338000D21211 /* Post.swift in Sources */,
+				28CEA55D2C02200000FA914A /* CustomAVPlayerItem.swift in Sources */,
 				28C73C0D2BFFE84100E82F12 /* ImageCache.swift in Sources */,
 				285B947E2BFF54A100D21211 /* PostCell.swift in Sources */,
 			);

@@ -15,6 +15,8 @@ class PostCell: UITableViewCell {
     @IBOutlet private weak var likesLabel: UILabel!
     @IBOutlet private weak var repeatButton: UIButton!
     
+    var post: Post? = nil
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCell()
@@ -32,10 +34,17 @@ class PostCell: UITableViewCell {
     }
     
     func configure(with post: Post) {
+        self.post = post
+        
         usernameLabel.text = "@\(post.username ?? "")"
         repeatButton.isHidden = true
         likesLabel.text = "Likes: \(post.likes ?? 0)"
-        videoPlayerView.configure(with: post.videoUrl ?? "")
+        
+        guard let postId = post.postId else {
+            fatalError("PostId can not be nil")
+        }
+        
+        videoPlayerView.configure(with: post.videoUrl ?? "", uniqueId: postId)
     }
     
     @objc func playVideo() {
@@ -62,7 +71,6 @@ class PostCell: UITableViewCell {
 private extension PostCell {
     
     func setupCell() {
-        videoPlayerView.configure(with: "")
         usernameLabel.text = nil
         likesLabel.text = nil
         videoPlayerView.delegate = self
@@ -71,7 +79,10 @@ private extension PostCell {
 
 extension PostCell: VideoPlayerViewOutput {
     
-    func videoPlayerViewItemDidPlayToEndTime() {
+    func videoPlayerViewItemDidPlayToEndTime(for playerItem: CustomAVPlayerItem) {
+        guard let post = self.post,
+        let postID = post.postId,
+        postID == playerItem.uniqueId else { return }
         repeatButton.isHidden = false
     }
 }

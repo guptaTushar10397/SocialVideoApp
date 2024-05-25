@@ -9,7 +9,7 @@ import UIKit
 import AVFoundation
 
 protocol VideoPlayerViewOutput: AnyObject {
-    func videoPlayerViewItemDidPlayToEndTime()
+    func videoPlayerViewItemDidPlayToEndTime(for playerItem: CustomAVPlayerItem)
 }
 
 class VideoPlayerView: UIView {
@@ -48,10 +48,12 @@ class VideoPlayerView: UIView {
         playerLayer?.frame = bounds
     }
     
-    func configure(with videoUrl: String) {
+    func configure(with videoUrl: String, uniqueId: String) {
         guard let url = URL(string: videoUrl) else { return }
+        let avPlayerItem = CustomAVPlayerItem(url: url)
+        avPlayerItem.uniqueId = uniqueId
         player?.pause()
-        player = AVPlayer(url: url)
+        player = AVPlayer(playerItem: avPlayerItem)
         playerLayer?.player = player
     }
     
@@ -71,7 +73,8 @@ class VideoPlayerView: UIView {
         player?.seek(to: time)
     }
     
-    @objc private func restartVideo() {
-        delegate?.videoPlayerViewItemDidPlayToEndTime()
+    @objc private func restartVideo(notification: NSNotification) {
+        guard let playerItem = notification.object as? CustomAVPlayerItem else { return }
+        delegate?.videoPlayerViewItemDidPlayToEndTime(for: playerItem)
     }
 }

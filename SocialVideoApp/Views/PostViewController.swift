@@ -70,7 +70,6 @@ private extension PostViewController {
         usernameLabel.text = nil
         profileImageView.image = nil
         repeatButton.isHidden = true
-        videoPlayerView.configure(with: "")
         videoPlayerView.delegate = self
         likesLabel.text = nil
         likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
@@ -101,7 +100,7 @@ private extension PostViewController {
     
     func configureUI(with post: Post) {
         usernameLabel.text = "@\(post.username ?? "")"
-        videoPlayerView.configure(with: post.videoUrl ?? "")
+        videoPlayerView.configure(with: post.videoUrl ?? "", uniqueId: postId)
         videoPlayerView.play()
         videoPlayerView.seek(to: startPlaybackTime)
         likesLabel.text = "Likes: \(post.likes ?? 0)"
@@ -151,7 +150,8 @@ extension PostViewController: ProfileViewControllerDelegate {
 
 extension PostViewController: VideoPlayerViewOutput {
     
-    func videoPlayerViewItemDidPlayToEndTime() {
+    func videoPlayerViewItemDidPlayToEndTime(for playerItem: CustomAVPlayerItem) {
+        guard postId == playerItem.uniqueId else { return }
         repeatButton.isHidden = false
     }
 }
