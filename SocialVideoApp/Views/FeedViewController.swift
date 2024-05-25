@@ -15,7 +15,7 @@ class FeedViewController: UIViewController {
     private var feedViewModel = FeedViewModel()
     private var currentlyPlayingVideoIndexPath: IndexPath?
     private var cellHeight: CGFloat {
-        tableView.frame.height - 80
+        tableView.frame.height - 60
     }
     
     override func viewDidLoad() {
@@ -96,15 +96,19 @@ private extension FeedViewController {
 
 extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        feedViewModel.posts.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return feedViewModel.posts.count
+        1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as? PostCell else {
             return UITableViewCell()
         }
-        let post = feedViewModel.posts[indexPath.row]
+        let post = feedViewModel.posts[indexPath.section]
         cell.configure(with: post)
         cell.selectionStyle = .none
         return cell
@@ -118,8 +122,24 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.cellForRow(at: indexPath) as? PostCell,
         let currentTime = cell.currentPlaybackTime() else { return }
         cell.pauseVideo()
-        let post = feedViewModel.posts[indexPath.row]
+        let post = feedViewModel.posts[indexPath.section]
         showPostViewController(with: post, currentTime: currentTime)
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        UIView()
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        UIView()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        20
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        20
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

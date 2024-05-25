@@ -54,7 +54,7 @@ private extension ProfileViewController {
         collectionViewLayout.minimumLineSpacing = 0
         collectionViewLayout.minimumInteritemSpacing = 10
         collectionViewLayout.scrollDirection = .vertical
-        collectionViewLayout.itemSize = CGSize(width: (collectionView.bounds.width - 20) / 2, height: 150)
+        collectionViewLayout.itemSize = CGSize(width: (collectionView.bounds.width - 42) / 2, height: 150)
         collectionView.collectionViewLayout = collectionViewLayout
     }
 }
